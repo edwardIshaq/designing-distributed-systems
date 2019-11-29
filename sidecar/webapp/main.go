@@ -8,6 +8,8 @@ import (
 	"net/url"
 )
 
+const listenPort = ":8080"
+
 func main() {
 	h1 := func(w http.ResponseWriter, _ *http.Request) {
 		io.WriteString(w, "Hello from a HandleFunc #1!\n")
@@ -23,7 +25,7 @@ func main() {
 	http.HandleFunc("/", h1)
 	http.HandleFunc("/api", h2)
 
-	log.Fatal(http.ListenAndServe(":8080", nil))
+	log.Fatal(http.ListenAndServe(listenPort, nil))
 }
 
 func reverse(word string) string {

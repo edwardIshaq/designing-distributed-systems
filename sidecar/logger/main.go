@@ -8,11 +8,23 @@ import (
 	"io/ioutil"
 	"log"
 	"net/http"
+	"os"
 	"strconv"
 )
 
 const maxMultipartFormSize = 10 * 1024 * 1024
 const loggingPort = ":8090"
+
+var hostName string
+
+func init() {
+	if name, err := os.Hostname(); err != nil {
+		log.Printf("Error getting hostname: %s", err.Error())
+	} else {
+		hostName = name
+		log.Printf("Running on Host: %s", hostName)
+	}
+}
 
 func main() {
 	debugInfo := func(w http.ResponseWriter, _ *http.Request) {

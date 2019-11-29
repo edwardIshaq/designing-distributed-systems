@@ -12,6 +12,7 @@ import (
 )
 
 const maxMultipartFormSize = 10 * 1024 * 1024
+const loggingPort = ":8090"
 
 func main() {
 	debugInfo := func(w http.ResponseWriter, _ *http.Request) {
@@ -23,7 +24,7 @@ func main() {
 	http.HandleFunc("/log/urlEncoded", logFormURLEncoded)
 	http.HandleFunc("/log/formData", logFormURLEncoded)
 
-	log.Fatal(http.ListenAndServe(":8090", nil))
+	log.Fatal(http.ListenAndServe(loggingPort, nil))
 }
 
 //x-www-form-urlencoded POST see URLEncoded.png

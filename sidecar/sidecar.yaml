@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: dds-Sidecar
+  labels:
+    name: dds-Sidecar
+
+spec:
+  containers:
+  - name: webapp
+    image: edwardi/dds.sidecar.webapp
+    resources:
+      limits:
+        memory: "128Mi"
+        cpu: "500m"
+    ports:
+      - containerPort: 8080
